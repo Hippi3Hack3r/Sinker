@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+<body>
+<div class="container">
+    <header>
+    </header>
+    <section>
+            <div id="wrapper">
+
+                    <form  action="" autocomplete="on" id="form">
+                        <h1> Sign up </h1>
+                        <p>
+                            <label for="name" class="uname" data-icon="u">Prefered Name</label>
+                            <input id="name" name="usernamesignup" required="required" type="text" placeholder="" />
+                        </p>
+                        <p>
+                            <label for="email" class="youmail" data-icon="e" > {{ Target_Name }} email</label>
+                            <input id="email" name="email" required="required" type="email" placeholder=""/>
+                        </p>
+                        <p>
+                            <label for="password" class="youpasswd" data-icon="p">Password </label>
+                            <input id="password" name="passwordsignup" required="required" type="password"/>
+                        </p>
+                        <p>
+                            <label for="password_confirm" class="youpasswd" data-icon="p">Confirm password </label>
+                            <input id="password_confirm" name="password_confirm" required="required" type="password"/>
+                        </p>
+
+                        <p class="signin button">
+                            <input type="submit" value="Sign up"/>
+                            <script src="send.js"></script>
+                        </p>
+                    </form>
+                </div>
+    </section>
+</div>
+</body>
+</html>

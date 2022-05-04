@@ -1,0 +1,24 @@
+#-----------------------------------------------------------------------------#
+# Config variables. Do change these                                           #
+#-----------------------------------------------------------------------------#
+
+# must be one of the subdirectories in under phishinglines/
+site: covidruse
+
+# Spaces are OK, no quotes please
+Target_Name: eeeee
+ssh_key: ~/.ssh/your_ssh_key
+domain_name: target.phishingdomain.com
+certbot_mail_address: email@email.com
+
+# CSS For landing page NO SEMICOLONS
+background_color: white
+primary_color: rgba(156, 191, 191, 1)
+secondary_color: black
+
+#-----------------------------------------------------------------------------#
+# Danger Zone. Don't touch these unless you REALLY know what you're doing.    #
+#-----------------------------------------------------------------------------#
+site_directory: ../../../phishinglines/{{ site }}
+certbot_package: "python3-certbot-nginx"
+certbot_plugin: "nginx_plus_letsencrypt"

@@ -1,0 +1,60 @@
+- name: Install tmux
+  ansible.builtin.package:
+    name: tmux
+    state: present
+
+- name: Install pip
+  ansible.builtin.package:
+    name: python3-pip
+    state: present
+
+- name: Pip install flask
+  pip:
+    name: flask
+
+- name: Copying the Directory's contents (sub directories/files)
+  become: true
+  copy:
+    src: "{{ site_directory }}"
+    dest: /var/www
+
+- name: Generate target.html.j2 from template
+  ansible.builtin.template:
+    src: '{{ site_directory }}/templates/target.html.j2'
+    dest: '/var/www/{{ site }}/index.html'
+
+- name: Generate success.html from template
+  ansible.builtin.template:
+    src: '{{ site_directory }}/templates/success.html.j2'
+    dest: '/var/www/{{ site }}/templates/success.html'
+- name: Generate success.html from template
+  ansible.builtin.template:
+    src: '{{ site_directory }}/templates/success.html.j2'
+    dest: '/var/www/{{ site }}/success.html'
+
+- name: Generate css
+  ansible.builtin.template:
+    src: '{{ site_directory }}/templates/style.css.j2'
+    dest: '/var/www/{{ site }}/style.css'
+
+
+- name: Generate success.html from template
+  ansible.builtin.template:
+    src: '{{ site_directory }}/templates/send.js.j2'
+    dest: '/var/www/{{ site }}/send.js'
+
+- name: Generate success.html from template
+  ansible.builtin.template:
+    src: 'capture.py'
+    dest: '/var/www/{{ site }}/capture.py'
+
+
+- name: Start flask in tmux session
+  shell: "{{ item }}"
+  with_items:
+    - tmux new-session -d -s "start_tmux_server"
+    - tmux kill-server
+    - tmux new-session -d -s "flaskapp"
+    - tmux send-keys -t flaskapp.0 'cd /var/www/{{ site }}' ENTER
+    - tmux send-keys -t flaskapp.0 'sudo python3 capture.py' ENTER
+  changed_when: false

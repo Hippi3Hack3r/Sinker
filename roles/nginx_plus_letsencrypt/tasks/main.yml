@@ -1,0 +1,31 @@
+- name: update apt cache
+  apt:
+    update_cache=true
+    cache_valid_time=7200
+
+- name: install nginx
+  apt:
+    name=nginx
+    state=present
+
+- name: copy ngint server config
+  become: true
+  template: src=serverconf.j2 dest=/etc/nginx/sites-enabled/serverconf
+- name: copy nginx server config
+  become: true
+  template: src=serverconf.j2 dest=/etc/nginx/sites-available/serverconf
+
+- name: delete default nginx_plus_letsencrypt config
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: restart nginx
+
+- name : Install Python Package
+  apt: name=python3 update_cache=yes state=latest
+
+- name : Install Let's Encrypt Package
+  apt: name={{ certbot_package }} update_cache=yes state=latest
+
+- name: Create and Install Cert Using {{ certbot_plugin }} Plugin
+  command: certbot --nginx -d "{{ domain_name }}" -m "{{ certbot_mail_address }}" --agree-tos --noninteractive --redirect
