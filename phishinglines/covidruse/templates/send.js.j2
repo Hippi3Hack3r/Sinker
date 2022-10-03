@@ -14,7 +14,7 @@ form_data.addEventListener("submit", (e) => {
         p: pass.value
     }
     var oReq = new XMLHttpRequest();
-    oReq.open("POST", "https://{{ domain_name }}/confirm.html", false);
+    oReq.open("POST", "https://{{ domain_name }}/confirm", false);
     oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     oReq.send(JSON.stringify(report));
 

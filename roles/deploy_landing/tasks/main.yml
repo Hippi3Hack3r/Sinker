@@ -12,6 +12,10 @@
   pip:
     name: flask
 
+- name: Pip install flask
+  pip:
+    name: ipinfo
+
 - name: Copying the Directory's contents (sub directories/files)
   become: true
   copy:
@@ -48,6 +52,10 @@
     src: 'capture.py'
     dest: '/var/www/{{ site }}/capture.py'
 
+- name: set api key from template
+  ansible.builtin.template:
+    src: 'roles/deploy_landing/templates/ipinfo.txt.j2'
+    dest: '/var/www/ipinfo.txt'
 
 - name: Start flask in tmux session
   shell: "{{ item }}"

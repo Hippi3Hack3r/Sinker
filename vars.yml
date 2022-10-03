@@ -6,15 +6,19 @@
 site: covidruse
 
 # Spaces are OK, no quotes please
-Target_Name: eeeee
-ssh_key: ~/.ssh/your_ssh_key
-domain_name: target.phishingdomain.com
-certbot_mail_address: email@email.com
+Target_Name: name
+ssh_key: ~/.ssh/id_rsa
+domain_name: example.com
+certbot_mail_address: Your-certbot-email@email.com
 
 # CSS For landing page NO SEMICOLONS
 background_color: white
 primary_color: rgba(156, 191, 191, 1)
 secondary_color: black
+
+# if you're signed up for the IPinfo api this program will automatically query
+# ips that connect to your server and log location data, etc.
+ipinfo_token: ipinfo_api_token
 
 #-----------------------------------------------------------------------------#
 # Danger Zone. Don't touch these unless you REALLY know what you're doing.    #

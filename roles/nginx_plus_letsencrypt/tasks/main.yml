@@ -8,9 +8,6 @@
     name=nginx
     state=present
 
-- name: copy ngint server config
-  become: true
-  template: src=serverconf.j2 dest=/etc/nginx/sites-enabled/serverconf
 - name: copy nginx server config
   become: true
   template: src=serverconf.j2 dest=/etc/nginx/sites-available/serverconf
@@ -18,6 +15,12 @@
 - name: delete default nginx_plus_letsencrypt config
   file:
     path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: restart nginx
+
+- name: delete default nginx_plus_letsencrypt config2
+  file:
+    path: /etc/nginx/sites-available/default
     state: absent
   notify: restart nginx
 
