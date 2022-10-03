@@ -3,9 +3,10 @@ Setting up a phishing campaign isn't easy. You have to tailor your ruse to your 
 
 This program was built for authorized pentesters and educational purposes. The author does not condone the use of this software to aid or assist in malicious activity.
 
-## Requirements 
+## Requirements
 * an internet accessible server
 * a domain with A records pointing at that server
+* an IPinfo api token 
 
 ## Instructions ##
 1. replace the ip address in the inventory file with the IP of your server.
